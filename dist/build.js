@@ -1,0 +1,1 @@
+!function(e,o){"object"==typeof exports&&"undefined"!=typeof module?o(exports):"function"==typeof define&&define.amd?define(["exports"],o):o((e=e||self).googleMapExtension={})}(this,(function(e){"use strict";e.version="1.0.0",Object.defineProperty(e,"__esModule",{value:!0})}));
