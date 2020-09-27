@@ -29,7 +29,7 @@ export declare var bugs: {
 export declare var homepage: string;
 export declare var devDependencies: {
     "@rollup/plugin-alias": string;
-    "@rollup/plugin-replace": string;
+    "@types/googlemaps": string;
     "@types/jest": string;
     "fetch-mock": string;
     jest: string;
@@ -38,10 +38,14 @@ export declare var devDependencies: {
     "rollup-plugin-commonjs": string;
     "rollup-plugin-json": string;
     "rollup-plugin-node-resolve": string;
+    "rollup-plugin-postcss": string;
     "rollup-plugin-terser": string;
     "rollup-plugin-typescript2": string;
     "ts-jest": string;
     "ts-node": string;
     "tsconfig-paths": string;
     typescript: string;
+};
+export declare var dependencies: {
+    "js-shared": string;
 };

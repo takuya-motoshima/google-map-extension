@@ -13,4 +13,5 @@ export var author = "Takuya Motoshima <developer.takuyamotoshima@gmail.com> (htt
 export var license = "MIT";
 export var bugs = {"url":"https://github.com/takuya-motoshima/google-map-extension/issues","email":"developer.takuyamotoshima@gmail.com"};
 export var homepage = "https://github.com/takuya-motoshima/google-map-extension#readme";
-export var devDependencies = {"@rollup/plugin-alias":"^3.0.1","@rollup/plugin-replace":"^2.3.1","@types/jest":"^24.0.23","fetch-mock":"^8.0.0","jest":"^24.9.0","json2module":"0.0.3","rollup":"^1.27.2","rollup-plugin-commonjs":"^10.1.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-terser":"^5.3.0","rollup-plugin-typescript2":"^0.25.2","ts-jest":"^24.1.0","ts-node":"^8.5.2","tsconfig-paths":"^3.9.0","typescript":"^3.7.2"};
+export var devDependencies = {"@rollup/plugin-alias":"^3.1.1","@types/googlemaps":"^3.39.13","@types/jest":"^24.0.23","fetch-mock":"^8.0.0","jest":"^24.9.0","json2module":"0.0.3","rollup":"^1.27.2","rollup-plugin-commonjs":"^10.1.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-postcss":"^3.1.8","rollup-plugin-terser":"^5.3.0","rollup-plugin-typescript2":"^0.25.2","ts-jest":"^24.1.0","ts-node":"^8.5.2","tsconfig-paths":"^3.9.0","typescript":"^3.7.2"};
+export var dependencies = {"js-shared":"^1.0.3"};

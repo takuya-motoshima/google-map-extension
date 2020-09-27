@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+  <title>Basic google map</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .map {
+      /*display: block;*/
+      width: 100%;
+      height: 100%;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <google-map id="map" class="map" zoom="12" center="35.658584,139.7454316" theme="dark" theme-control></google-map>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&language=en"></script>
+  <script type="module">
+    import '../dist/build.esm.js';
+
+    const map = document.querySelector('#map');
+  </script>
+</body>
+</html>
