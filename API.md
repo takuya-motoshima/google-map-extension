@@ -125,7 +125,7 @@
     <google-map fullscreen-control></google-map>
     ```
 
-- __tueme-control__  
+- __theme-control__  
     Adding this attribute will display Theme control on the map.
 
     <img src="https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/control-theme.png" height="150">
