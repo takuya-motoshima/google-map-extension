@@ -1,5 +1,5 @@
 export var name = "google-map-extension";
-export var version = "1.0.0";
+export var version = "1.0.3";
 export var description = "Google Map extension.";
 export var main = "dist/build.common.js";
 export var module = "dist/build.esm.js";
@@ -8,7 +8,7 @@ export var types = "types/index.d.ts";
 export var scripts = {"watch":"rollup -c --watch","prewatch":"rm -rf dist types && json2module package.json > src/package.ts","build":"rollup -c","prebuild":"rm -rf dist types && json2module package.json > src/package.ts","test":"jest","start":"ts-node -r tsconfig-paths/register -P tsconfig.json -O '{\"module\":\"commonjs\"}' -e \"import * as index from '~/index';console.log(index);\"","prestart":"json2module package.json > src/package.ts"};
 export var repository = {"type":"git","url":"git+https://github.com/takuya-motoshima/google-map-extension.git"};
 export var files = ["dist/*.js","types/*.d.ts","package.json","README.md","CHANGELOG.md","examples","screencap"];
-export var keywords = ["browser","javascript","js","library","lib","module","typescript","ts","esm","es6"];
+export var keywords = ["browser","javascript","js","library","lib","module","typescript","ts","esm","es6","googlemaps","googlemap","google-maps","google-map","maps","map"];
 export var author = "Takuya Motoshima <developer.takuyamotoshima@gmail.com> (https://twitter.com/TakuyaMotoshima)";
 export var license = "MIT";
 export var bugs = {"url":"https://github.com/takuya-motoshima/google-map-extension/issues","email":"developer.takuyamotoshima@gmail.com"};

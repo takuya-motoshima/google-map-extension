@@ -16,6 +16,8 @@ npm install google-map-extension;
 
 [Changelog](./CHANGELOG.md)
 
+The latest update adds a marker addition method to the map class.
+
 ## Examples
 
 There are some examples in "./examples" in this package.Here is the first one to get you started.
@@ -90,6 +92,97 @@ See [API Documentation](./API.md) for details.
         </tr>
     </tbody>
 </table>
+
+### Map marker usage.
+
+#### Display simple circle marker.  
+
+![simple-circle-marker.png](https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/simple-circle-marker.png)
+
+Example.  
+
+```js
+<google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+
+// Map element.
+const map = document.querySelector('#map');
+
+// Marker color.
+const Color = {
+  blue: 'rgb(0,122,255)',
+  green: 'rgb(52,199,89)',
+  indigo: 'rgb(88,86,214)',
+  orange: 'rgb(255,149,0)',
+  pink: 'rgb(255,45,85)',
+  purple: 'rgb(175,82,222)',
+  red: 'rgb(255,59,48)',
+  teal: 'rgb(90,200,250)',
+  yellow: 'rgb(255,204,0)'
+};
+
+// Add a marker.
+const marker = await map.addMarker({
+  color: Color.blue,
+  size: 60,
+  position: { lat: 35.650584, lng: 139.7454316 }
+});
+```
+
+#### Display custom image marker.  
+
+![simple-circle-marker.png](https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/custom-image-marker.png)
+
+Example.  
+
+```js
+<google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+
+// Map element.
+const map = document.querySelector('#map');
+
+// Marker color.
+const Color = {
+  blue: 'rgb(0,122,255)',
+  green: 'rgb(52,199,89)',
+  indigo: 'rgb(88,86,214)',
+  orange: 'rgb(255,149,0)',
+  pink: 'rgb(255,45,85)',
+  purple: 'rgb(175,82,222)',
+  red: 'rgb(255,59,48)',
+  teal: 'rgb(90,200,250)',
+  yellow: 'rgb(255,204,0)'
+};
+
+// Add a marker.
+const marker = await map.addMarker({
+  image: 'sample.png',
+  color: Color.blue,
+  size: 60,
+  position: { lat: 35.650584, lng: 139.7454316 }
+});
+```
+
+#### Move the marker.
+
+Example.  
+
+```js
+<google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+
+// Map element.
+const map = document.querySelector('#map');
+
+// Get position when map is clicked.
+map.on('click.map', event => {
+  // longitude latitude.
+  const latlng = event.detail;
+  // Move the marker to the clicked position.
+  marker.moveToPosition(latlng);
+});
+
+// Add a marker.
+const marker = await map.addMarker();
+```
 
 ## License
 

@@ -136,3 +136,96 @@
     // Enable theme control
     <google-map theme-control></google-map>
     ```
+
+## Events
+
+### click.map
+Fires when the map is clicked.  
+You can get the latitude and longitude of the clicked position..
+
+```js
+<google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+
+// Map element.
+const map = document.querySelector('#map');
+
+// Add a marker.
+const marker = await map.addMarker();
+
+// Get position when map is clicked.
+map.on('click.map', event => {
+    // longitude latitude.
+    const latlng = event.detail;
+    // Move the marker to the clicked position.
+    marker.moveToPosition(latlng);
+});
+```
+
+## Properties
+- __map__: google.maps.Map  
+    A google.maps.Map object.  
+    See [Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/reference/map) for details.
+
+## Methods
+
+### addMarker()
+Open the camera.
+
+###### Syntax
+```js
+map.addMarker(option?: {
+  position?: {
+    lat: number,
+    lng: number
+  },
+  size?: number,
+  visible?: boolean,
+  image?: string,
+  color?: string
+}): Promise<CircleMarker>
+```
+
+###### Parameters
+- __position__: { lat: number lng: number }  
+    Initial display position of marker.  
+    The default is the center of the currently displayed map.
+
+- __size__: number  
+    The display size of the marker.  
+    The unit is pixels.  
+    The default is 50px.
+
+- __visible__: boolean  
+    It is the initial visible state when it is added.  
+    The default is true (visible).
+
+- __image__: string  
+    The URL of the image to be displayed on the marker.  
+    The default is undefined (no image).
+
+- __color__: string  
+    The color of the marker.  
+    The default is blue (rgb(0,122,255)).
+
+###### Return
+Returns a CircleMarker object.  
+See [CircleMarker class.](#CircleMarker-class.) for details.
+
+# CircleMarker class.
+
+## Methods
+
+### moveToPosition()
+Move the marker to the specified position.
+
+###### Syntax
+```js
+marker.moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral): CircleMarker
+```
+
+###### Parameters
+- __latlang__: google.maps.LatLng|google.maps.LatLngLiteral  
+    The latitude and longitude of the display position of the marker.
+
+###### Return
+Returns a CircleMarker object.

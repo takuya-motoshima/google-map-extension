@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.4] - 2020-10-07
+
+- Added marker addition method to map class.
+
 ## [1.0.3] - 2020-09-28
 
 - Once again fixed the incorrect wording in the API docs.

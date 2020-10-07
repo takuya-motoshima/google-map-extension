@@ -13,24 +13,107 @@
     body {
       margin: 0;
     }
-
-    .map {
-      /*display: block;*/
-      width: 100%;
-      height: 100%;
-      background-color: black;
-    }
   </style>
 </head>
 <body>
 
-  <google-map id="map" class="map" zoom="12" center="35.658584,139.7454316" theme="dark" theme-control></google-map>
+  <google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark" -theme-control></google-map>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&language=en"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4upCxP6mO3hJ7e2Oykbo-I0ymRHnxHss&language=en"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&language=en"></script> -->
   <script type="module">
     import '../dist/build.esm.js';
 
-    const map = document.querySelector('#map');
+    (async () => {
+
+      // Map element.
+      const map = document.querySelector('#map');
+
+      // Get position when map is clicked.
+      map.on('click.map', event => {
+        // longitude latitude.
+        const latlng = event.detail;
+        // Move the marker to the clicked position.
+        marker1.moveToPosition(latlng);
+      });
+
+      // Marker color.
+      const Color = {
+        blue: 'rgb(0,122,255)',
+        green: 'rgb(52,199,89)',
+        indigo: 'rgb(88,86,214)',
+        orange: 'rgb(255,149,0)',
+        pink: 'rgb(255,45,85)',
+        purple: 'rgb(175,82,222)',
+        red: 'rgb(255,59,48)',
+        teal: 'rgb(90,200,250)',
+        yellow: 'rgb(255,204,0)'
+      };
+
+      // Add a marker.
+      const marker1 = await map.addMarker({
+        image: 'image/face1.png',
+        color: Color.blue,
+        size: 60,
+        position: { lat: 35.650584, lng: 139.7454316 }
+      });
+
+      await map.addMarker({
+        image: 'image/face2.png',
+        color: Color.green,
+        size: 70,
+        position: { lat: 35.694584, lng: 139.7154316 }
+      });
+
+      await map.addMarker({
+        image: 'image/face3.png',
+        color: Color.indigo,
+        size: 80,
+        position: { lat: 35.714584, lng: 139.6554316 }
+      });
+
+      await map.addMarker({
+        image: 'image/face4.png',
+        color: Color.orange,
+        size: 90,
+        position: { lat: 35.719584, lng: 139.7814316 }
+      });
+
+      await map.addMarker({
+        image: 'image/face5.png',
+        color: Color.pink,
+        size: 60,
+        position: { lat: 35.670584, lng: 139.7914316 }
+      });
+
+      await map.addMarker({
+        image: 'image/face6.png',
+        color: Color.purple,
+        size: 70,
+        position: { lat: 35.610584, lng: 139.6814316 }
+      });
+
+      await map.addMarker({
+        image: 'image/face7.png',
+        color: Color.red,
+        size: 80,
+        position: { lat: 35.69000, lng: 139.8814316 }
+      });
+
+      await map.addMarker({
+        image: 'image/face8.png',
+        color: Color.teal,
+        size: 90,
+        position: { lat: 35.65000, lng: 139.6414316 }
+      });
+
+      await map.addMarker({
+        image: 'image/face9.png',
+        color: Color.yellow,
+        size: 60,
+        position: { lat: 35.58500, lng: 139.8114316 }
+      });
+    })();
   </script>
 </body>
 </html>

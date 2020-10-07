@@ -1,8 +1,11 @@
-import './style/googleMap.css';
+import './style/map.css';
 import themes from '~/theme';
 import { Cookie } from 'js-shared';
+import CircleMarker from '~/CircleMarker';
+import CircleMarkerOption from '~/interface/CircleMarkerOption';
+import MapOption from '~/interface/MapOption';
 
-class GoogleMap extends HTMLElement {
+class Map extends HTMLElement {
 
   public map: google.maps.Map;
   private theme!: HTMLSelectElement;
@@ -14,18 +17,7 @@ class GoogleMap extends HTMLElement {
     super();
 
     // Map options
-    const option: {
-      zoom: number,
-      center: google.maps.LatLng | google.maps.LatLngLiteral,
-      mapTypeId: google.maps.MapTypeId,
-      styles?: google.maps.MapTypeStyle[]|undefined
-      // disableDefaultUI: boolean,
-      zoomControl: boolean,
-      streetViewControl: boolean,
-      mapTypeControl: boolean,
-      fullscreenControl: boolean,
-      clickableIcons: boolean
-    } = {
+    const option: MapOption = {
       zoom: 13,
       center: { lat: 0, lng: 0 },
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -49,8 +41,6 @@ class GoogleMap extends HTMLElement {
     if (this.getAttribute('streetview-control') !== null) option.streetViewControl = true;
     if (this.getAttribute('fullscreen-control') !== null) option.fullscreenControl = true;
 
-    // console.log('option=', option);
-
     // Initialize map
     this.map = new google.maps.Map(this, option);
 
@@ -58,13 +48,17 @@ class GoogleMap extends HTMLElement {
     if (this.getAttribute('theme-control') !== null) {
       this.addThemeControl();
       // Select the theme stored in the cookie.
-      if (Cookie.get('theme') && Cookie.get('theme') in themes) {
+      if (Cookie.get('theme') && (Cookie.get('theme') === 'standard' || Cookie.get('theme') in themes)) {
         // @ts-ignore
-        this.map.setOptions({ styles: Cookie.get('theme') !== 'standard' ? themes[Cookie.get('theme')] as google.maps.MapTypeStyle[] : undefined });
+        const styles = Cookie.get('theme') !== 'standard' ? themes[Cookie.get('theme')] as google.maps.MapTypeStyle[] : undefined;
+        this.map.setOptions({ styles });
         const option = this.theme.querySelector(`option[value="${Cookie.get('theme')}"`) as HTMLOptionElement;
         option.setAttribute('selected', 'selected');
       }
     }
+
+    // Returns the latitude and longitude you clicked when you clicked on the map.
+    this.map.addListener('click', event => this.invoke('click.map', { lat: event.latLng.lat(), lng: event.latLng.lng() }));
   }
 
   /**
@@ -74,6 +68,7 @@ class GoogleMap extends HTMLElement {
    */
   protected connectedCallback(): void {
     // If the display is inline, change it to a block.
+    this.classList.add('google-map');
     if (getComputedStyle(this).display === 'inline') this.style.display = 'block';
   }
 
@@ -99,14 +94,64 @@ class GoogleMap extends HTMLElement {
   }
 
   /**
+   * Add a circular marker to Google Maps
+   * 
+   * @param  {CircleMarkerOption} option
+   * @return {CircleMarker}
+   */
+  public async addMarker(option? : CircleMarkerOption): Promise<CircleMarker> {
+    // Returns a google map marker object.
+    const circlemarker = new CircleMarker(this.map);
+    await circlemarker.attach(option);
+    return circlemarker;
+  }
+
+  /**
+   * Add event listener
+   * 
+   * @param  {string}           type
+   * @param  {() => void}       listener
+   * @param  {{ once: boolen }} options.once
+   * @return {this}
+   */
+   public on(type: string, listener: (event?: Event) => void, option: { once: boolean } = { once: false }): Map {
+    this.addEventListener(type, listener, option);
+    return this;
+  }
+
+  /**
+   * Remove event listener
+   * 
+   * @param  {string}     type
+   * @param  {() => void} listener
+   * @return {this}
+   */
+   public off(type: string, listener: (event?: Event) => void): Map {
+    this.removeEventListener(type, listener);
+    return this;
+  }
+
+  /**
+   * Call event listener
+   * 
+   * @param  {string} type
+   * @param  {Object}     detail
+   * @return {void}
+   */
+  private invoke(type: string, detail: {} = {}): void {
+    const event = new CustomEvent(type, { detail });
+    this.dispatchEvent(event);
+  }
+
+  /**
    * Add theme control.
    * 
    * @return {void}
    */
   private addThemeControl(): void {
     this.theme = document.createElement('select') as HTMLSelectElement;
-    this.theme.classList.add('theme-control');
-    for(let value of [ 'standard', ...Object.keys(themes) ]) {
+    this.theme.classList.add('google-map-theme-control');
+    for (let value of [ 'standard', ...Object.keys(themes) ]) {
       const option = document.createElement('option');
       option.textContent = `${value.charAt(0).toUpperCase()}${value.slice(1)}`;
       option.value = value;
@@ -122,5 +167,5 @@ class GoogleMap extends HTMLElement {
   }
 }
 
-GoogleMap.define();
-export default GoogleMap;
+Map.define();
+export default Map;
