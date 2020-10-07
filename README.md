@@ -2,6 +2,8 @@
 
 Google Map extension.
 
+![all.jpg](https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/all.jpg)
+
 ## Installation
 
 ```sh
@@ -41,8 +43,7 @@ You can easily control the addition of controls, default position, zoom level, e
   zoom-control
   streetview-control
   fullscreen-control
-  theme-control>
-</google-map>
+  theme-control></google-map>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
 <script type="module">
@@ -103,6 +104,9 @@ Example.
 
 ```js
 <google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
+import 'google-map-extension';
 
 // Map element.
 const map = document.querySelector('#map');
@@ -136,6 +140,9 @@ Example.
 
 ```js
 <google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
+import 'google-map-extension';
 
 // Map element.
 const map = document.querySelector('#map');
@@ -168,6 +175,9 @@ Example.
 
 ```js
 <google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
+import 'google-map-extension';
 
 // Map element.
 const map = document.querySelector('#map');
@@ -182,6 +192,26 @@ map.on('click.map', event => {
 
 // Add a marker.
 const marker = await map.addMarker();
+```
+
+#### Remove marker.  
+
+Example.  
+
+```js
+<google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
+import 'google-map-extension';
+
+// Map element.
+const map = document.querySelector('#map');
+
+// Add a marker.
+const marker = await map.addMarker();
+
+// Remove marker.
+map.removeMarker(marker);
 ```
 
 ## License

@@ -103,4 +103,13 @@ export default class CircleMarker {
   // public moveToAddress(address: string): CircleMarker {
   //   return this;
   // }
+
+  /**
+   * Remove marker.
+   * 
+   * @return {void}
+   */
+  public remove(): void {
+    this.marker.setMap(null);
+  }
 }

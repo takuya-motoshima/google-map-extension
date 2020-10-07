@@ -211,6 +211,21 @@ map.addMarker(option?: {
 Returns a CircleMarker object.  
 See [CircleMarker class.](#CircleMarker-class.) for details.
 
+### removeMarker()
+Remove marker.
+
+###### Syntax
+```js
+map.removeMarker(marker : CircleMarker): Map
+```
+
+###### Parameters
+- __marker__: CircleMarker  
+    Marker object you want to delete.
+
+###### Return
+Returns a Map object.
+
 # CircleMarker class.
 
 ## Methods

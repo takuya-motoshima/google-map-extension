@@ -23,4 +23,10 @@ export default class CircleMarker {
      * @return {CircleMarker}
      */
     moveToPosition(latlang: google.maps.LatLng | google.maps.LatLngLiteral): CircleMarker;
+    /**
+     * Remove marker.
+     *
+     * @return {void}
+     */
+    remove(): void;
 }

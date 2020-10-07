@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+  <title>Example of google map marker</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+    }
+    .floating-panel {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid #999;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+
+  <div class="floating-panel">
+    <button type="button" id="addMarker">Add Marker</button>
+    <button type="button" id="deleteMarkers">Delete All Markers</button>
+  </div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&language=en"></script>
+  <script type="module">
+    import '../dist/build.esm.js';
+
+    (async () => {
+
+      // Returns a random color.
+      function randColor() {
+        const colors = [ 'rgb(0,122,255)', 'rgb(52,199,89)', 'rgb(88,86,214)', 'rgb(255,149,0)', 'rgb(255,45,85)', 'rgb(175,82,222)', 'rgb(255,59,48)', 'rgb(90,200,250)', 'rgb(255,204,0)' ];
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      // Returns a random decimal.
+      function randFloat() {
+        const min = -.5;
+        const max = .5;
+        return (Math.random() * (max - min) + min) * .1;
+      };
+
+      // Map element.
+      const map = document.querySelector('#map');
+
+      // Marker object.
+      const markers = [];
+
+      // Add a marker.
+      document.querySelector('#addMarker').addEventListener('click', async () => {
+        const marker = await map.addMarker({
+          color: randColor(),
+          position: { lat: 35.658584 + randFloat(), lng: 139.7454316 + randFloat() }
+        });
+        markers.push(marker);
+      });
+
+      // Remove all markers.
+      document.querySelector('#deleteMarkers').addEventListener('click', () => {
+        for (let marker of markers) map.removeMarker(marker);
+      });
+    })();
+  </script>
+</body>
+</html>

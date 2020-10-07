@@ -107,6 +107,19 @@ class Map extends HTMLElement {
   }
 
   /**
+   * Remove marker.
+   * 
+   * @param  {CircleMarker} marker
+   * @return {Map}
+   */
+  public removeMarker(marker : CircleMarker): Map {
+    marker.remove();
+    // @ts-ignore
+    marker = null;
+    return this;
+  }
+
+  /**
    * Add event listener
    * 
    * @param  {string}           type

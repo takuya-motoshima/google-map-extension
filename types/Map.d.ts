@@ -35,6 +35,13 @@ declare class Map extends HTMLElement {
      */
     addMarker(option?: CircleMarkerOption): Promise<CircleMarker>;
     /**
+     * Remove marker.
+     *
+     * @param  {CircleMarker} marker
+     * @return {Map}
+     */
+    removeMarker(marker: CircleMarker): Map;
+    /**
      * Add event listener
      *
      * @param  {string}           type
