@@ -1,7 +1,7 @@
 /// <reference types="googlemaps" />
 import './style/map.css';
-import CircleMarker from '~/CircleMarker';
-import CircleMarkerOption from '~/interface/CircleMarkerOption';
+import GoogleMapCircleMarker from '~/GoogleMapCircleMarker';
+import GoogleMapCircleMarkerOption from '~/interface/GoogleMapCircleMarkerOption';
 declare class Map extends HTMLElement {
     map: google.maps.Map;
     private theme;
@@ -30,17 +30,17 @@ declare class Map extends HTMLElement {
     /**
      * Add a circular marker to Google Maps
      *
-     * @param  {CircleMarkerOption} option
-     * @return {CircleMarker}
+     * @param  {GoogleMapCircleMarkerOption} option
+     * @return {GoogleMapCircleMarker}
      */
-    addMarker(option?: CircleMarkerOption): Promise<CircleMarker>;
+    addMarker(option?: GoogleMapCircleMarkerOption): Promise<GoogleMapCircleMarker>;
     /**
      * Remove marker.
      *
-     * @param  {CircleMarker} marker
+     * @param  {GoogleMapCircleMarker} marker
      * @return {Map}
      */
-    removeMarker(marker: CircleMarker): Map;
+    removeMarker(marker: GoogleMapCircleMarker): Map;
     /**
      * Add event listener
      *

@@ -1,7 +1,7 @@
-import CircleMarkerOption from '~/interface/CircleMarkerOption';
+import GoogleMapCircleMarkerOption from '~/interface/GoogleMapCircleMarkerOption';
 import { Template } from 'js-shared';
 
-export default class CircleMarker {
+export default class GoogleMapCircleMarker {
 
   public map: google.maps.Map;
   public marker!: google.maps.Marker;
@@ -18,9 +18,9 @@ export default class CircleMarker {
   /**
    * Attach a marker to the map
    * 
-   * @param {CircleMarkerOption} option
+   * @param {GoogleMapCircleMarkerOption} option
    */
-  public async attach(option? : CircleMarkerOption) {
+  public async attach(option? : GoogleMapCircleMarkerOption) {
     // Initialize options.
     option = Object.assign({
       position: {
@@ -87,10 +87,10 @@ export default class CircleMarker {
    * 
    * @param  {number}       lat
    * @param  {number}       lng
-   * @return {CircleMarker}
+   * @return {GoogleMapCircleMarker}
    */
-  public moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral): CircleMarker {
-    this.marker.setPosition(latlang);
+  public moveToPosition(latlng: google.maps.LatLng|google.maps.LatLngLiteral): GoogleMapCircleMarker {
+    this.marker.setPosition(latlng);
     return this;
   }
 
@@ -98,9 +98,9 @@ export default class CircleMarker {
   //  * Move the marker to the specified address.
   //  * 
   //  * @param  {string}       address
-  //  * @return {CircleMarker}
+  //  * @return {GoogleMapCircleMarker}
   //  */
-  // public moveToAddress(address: string): CircleMarker {
+  // public moveToAddress(address: string): GoogleMapCircleMarker {
   //   return this;
   // }
 

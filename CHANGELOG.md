@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.5] - 2020-10-09
+
+- Added map utility class(GoogleMapUtils).
+
 ## [1.0.4] - 2020-10-07
 
 - Added marker addition method to map class.

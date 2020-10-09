@@ -1,6 +1,6 @@
 /// <reference types="googlemaps" />
-import CircleMarkerOption from '~/interface/CircleMarkerOption';
-export default class CircleMarker {
+import GoogleMapCircleMarkerOption from '~/interface/GoogleMapCircleMarkerOption';
+export default class GoogleMapCircleMarker {
     map: google.maps.Map;
     marker: google.maps.Marker;
     /**
@@ -12,17 +12,17 @@ export default class CircleMarker {
     /**
      * Attach a marker to the map
      *
-     * @param {CircleMarkerOption} option
+     * @param {GoogleMapCircleMarkerOption} option
      */
-    attach(option?: CircleMarkerOption): Promise<void>;
+    attach(option?: GoogleMapCircleMarkerOption): Promise<void>;
     /**
      * Move the marker to the specified position.
      *
      * @param  {number}       lat
      * @param  {number}       lng
-     * @return {CircleMarker}
+     * @return {GoogleMapCircleMarker}
      */
-    moveToPosition(latlang: google.maps.LatLng | google.maps.LatLngLiteral): CircleMarker;
+    moveToPosition(latlng: google.maps.LatLng | google.maps.LatLngLiteral): GoogleMapCircleMarker;
     /**
      * Remove marker.
      *

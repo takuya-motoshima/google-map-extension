@@ -182,7 +182,7 @@ map.addMarker(option?: {
   visible?: boolean,
   image?: string,
   color?: string
-}): Promise<CircleMarker>
+}): Promise<GoogleMapCircleMarker>
 ```
 
 ###### Parameters
@@ -208,25 +208,27 @@ map.addMarker(option?: {
     The default is blue (rgb(0,122,255)).
 
 ###### Return
-Returns a CircleMarker object.  
-See [CircleMarker class.](#CircleMarker-class.) for details.
+Returns a GoogleMapCircleMarker object.  
+See [GoogleMapCircleMarker class.](#GoogleMapCircleMarker-class.) for details.
 
 ### removeMarker()
 Remove marker.
 
 ###### Syntax
 ```js
-map.removeMarker(marker : CircleMarker): Map
+map.removeMarker(marker : GoogleMapCircleMarker): GoogleMap
 ```
 
 ###### Parameters
-- __marker__: CircleMarker  
+- __marker__: GoogleMapCircleMarker  
     Marker object you want to delete.
 
 ###### Return
-Returns a Map object.
+Returns a GoogleMap element.
 
-# CircleMarker class.
+# GoogleMapCircleMarker class.
+
+Marker object to display on the map.  
 
 ## Methods
 
@@ -235,7 +237,7 @@ Move the marker to the specified position.
 
 ###### Syntax
 ```js
-marker.moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral): CircleMarker
+marker.moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral): GoogleMapCircleMarker
 ```
 
 ###### Parameters
@@ -243,4 +245,40 @@ marker.moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral): Ci
     The latitude and longitude of the display position of the marker.
 
 ###### Return
-Returns a CircleMarker object.
+Returns a GoogleMapCircleMarker object.
+
+# GoogleMapUtils class.
+
+General purpose map utility.  
+
+## Methods
+
+### getLatLngFromAddress()
+Get latitude / longitude from address.
+
+###### Syntax
+```js
+GoogleMapUtils.getLatLngFromAddress(address: string): Promise<google.maps.LatLngLiteral>
+```
+
+###### Parameters
+- __address__: string  
+    Address string.
+
+###### Return
+Returns a google.maps.LatLngLiteral object of latitude and longitude obtained based on the address.
+
+### getAddressFromLatLng()
+Get the address from latitude and longitude.
+
+###### Syntax
+```js
+GoogleMapUtils.getAddressFromLatLng(latlng: google.maps.LatLng|google.maps.LatLngLiteral): Promise<string|undefined>
+```
+
+###### Parameters
+- __latlng__: google.maps.LatLng|google.maps.LatLngLiteral  
+    Latitude and longitude you want to find.
+
+###### Return
+Returns the address obtained based on latitude and longitude.

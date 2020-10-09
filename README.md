@@ -18,7 +18,7 @@ npm install google-map-extension;
 
 [Changelog](./CHANGELOG.md)
 
-The latest update adds a marker addition method to the map class.
+The latest update was Added map utility class (GoogleMapUtils).
 
 ## Examples
 
@@ -212,6 +212,34 @@ const marker = await map.addMarker();
 
 // Remove marker.
 map.removeMarker(marker);
+```
+
+### Google Maps General Utility Usage
+
+![utils.png](https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/utils.png)
+
+#### Get latitude / longitude from address.
+
+Example.  
+
+```js
+import { GoogleMapUtils } from 'google-map-extension';
+
+// Convert address to latitude / longitude.
+const latlng = await GoogleMapUtils.getLatLngFromAddress('1-chōme-11-21 Mita, Minato City, Tōkyō-to 108-0073, Japan');
+console.log(latlng); // { lat: 35.653172159299146, lng: 139.73969810581877 }
+```
+
+#### Get the address from latitude and longitude.
+
+Example.  
+
+```js
+import { GoogleMapUtils } from 'google-map-extension';
+
+// Convert address to latitude / longitude.
+const address = await GoogleMapUtils.getAddressFromLatLng({ lat: 35.653172159299146, lng: 139.73969810581877 });
+console.log(address)// '1-chōme-11-21 Mita, Minato City, Tōkyō-to 108-0073, Japan'
 ```
 
 ## License

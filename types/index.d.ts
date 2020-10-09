@@ -1,4 +1,4 @@
 import { version } from '~/package';
-import Map from '~/Map';
-import Utils from '~/Utils';
-export { version, Map, Utils };
+import GoogleMap from '~/GoogleMap';
+import GoogleMapUtils from '~/GoogleMapUtils';
+export { version, GoogleMap, GoogleMapUtils };

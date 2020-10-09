@@ -1,9 +1,9 @@
 import './style/map.css';
 import themes from '~/theme';
 import { Cookie } from 'js-shared';
-import CircleMarker from '~/CircleMarker';
-import CircleMarkerOption from '~/interface/CircleMarkerOption';
-import MapOption from '~/interface/MapOption';
+import GoogleMapCircleMarker from '~/GoogleMapCircleMarker';
+import GoogleMapCircleMarkerOption from '~/interface/GoogleMapCircleMarkerOption';
+import GoogleMapOption from '~/interface/GoogleMapOption';
 
 class Map extends HTMLElement {
 
@@ -17,7 +17,7 @@ class Map extends HTMLElement {
     super();
 
     // Map options
-    const option: MapOption = {
+    const option: GoogleMapOption = {
       zoom: 13,
       center: { lat: 0, lng: 0 },
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -96,12 +96,12 @@ class Map extends HTMLElement {
   /**
    * Add a circular marker to Google Maps
    * 
-   * @param  {CircleMarkerOption} option
-   * @return {CircleMarker}
+   * @param  {GoogleMapCircleMarkerOption} option
+   * @return {GoogleMapCircleMarker}
    */
-  public async addMarker(option? : CircleMarkerOption): Promise<CircleMarker> {
+  public async addMarker(option? : GoogleMapCircleMarkerOption): Promise<GoogleMapCircleMarker> {
     // Returns a google map marker object.
-    const circlemarker = new CircleMarker(this.map);
+    const circlemarker = new GoogleMapCircleMarker(this.map);
     await circlemarker.attach(option);
     return circlemarker;
   }
@@ -109,10 +109,10 @@ class Map extends HTMLElement {
   /**
    * Remove marker.
    * 
-   * @param  {CircleMarker} marker
+   * @param  {GoogleMapCircleMarker} marker
    * @return {Map}
    */
-  public removeMarker(marker : CircleMarker): Map {
+  public removeMarker(marker : GoogleMapCircleMarker): Map {
     marker.remove();
     // @ts-ignore
     marker = null;
