@@ -31,6 +31,8 @@
   <div class="floating-panel">
     <button type="button" id="addMarker">Add Marker</button>
     <button type="button" id="deleteMarkers">Delete All Markers</button>
+    <button type="button" id="addMarkers">Randomly add markers</button>
+    <button type="button" id="zoomToFit">Zoom to fit all markers</button>
   </div>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4upCxP6mO3hJ7e2Oykbo-I0ymRHnxHss&language=en"></script>
@@ -46,11 +48,11 @@
         return colors[Math.floor(Math.random() * colors.length)];
       }
 
-      // Returns a random decimal.
-      function randFloat() {
-        const min = -.5;
-        const max = .5;
-        return (Math.random() * (max - min) + min) * .1;
+      // Returns random latitude and longitude.
+      function randLatLng(min = -2, max = 2) {
+        const lat = 35.658584 + (Math.random() * (max - min) + min) * .1;
+        const lng = 139.7454316 + (Math.random() * (max - min) + min) * .1;
+        return { lat, lng };
       };
 
       // Map element.
@@ -61,16 +63,26 @@
 
       // Add a marker.
       document.querySelector('#addMarker').addEventListener('click', async () => {
-        const marker = await map.addMarker({
-          color: randColor(),
-          position: { lat: 35.658584 + randFloat(), lng: 139.7454316 + randFloat() }
-        });
+        const marker = await map.addMarker({ color: randColor(), position: randLatLng() });
         markers.push(marker);
       });
 
       // Remove all markers.
       document.querySelector('#deleteMarkers').addEventListener('click', () => {
         for (let marker of markers) map.removeMarker(marker);
+      });
+
+      // Add lots of markers at random.
+      document.querySelector('#addMarkers').addEventListener('click', async () => {
+        for (let i=0; i<10; i++) {
+          const marker = await map.addMarker({ color: randColor(), position: randLatLng() });
+          markers.push(marker);
+        }
+      });
+
+      // Zoom to fit all markers.
+      document.querySelector('#zoomToFit').addEventListener('click', () => {
+        map.zoomToFitAllPositions(markers);
       });
     })();
   </script>

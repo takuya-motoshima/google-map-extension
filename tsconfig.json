@@ -16,7 +16,8 @@
         "src/*"
       ]
     },
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["googlemaps"]
   },
   "include": [
     "src/**/*"

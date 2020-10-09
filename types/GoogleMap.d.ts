@@ -2,7 +2,7 @@
 import './style/map.css';
 import GoogleMapCircleMarker from '~/GoogleMapCircleMarker';
 import GoogleMapCircleMarkerOption from '~/interface/GoogleMapCircleMarkerOption';
-declare class Map extends HTMLElement {
+declare class GoogleMap extends HTMLElement {
     map: google.maps.Map;
     private theme;
     /**
@@ -38,28 +38,35 @@ declare class Map extends HTMLElement {
      * Remove marker.
      *
      * @param  {GoogleMapCircleMarker} marker
-     * @return {Map}
+     * @return {GoogleMap}
      */
-    removeMarker(marker: GoogleMapCircleMarker): Map;
+    removeMarker(marker: GoogleMapCircleMarker): GoogleMap;
+    /**
+     * Zoom to fit all longitude/latitude or markers.
+     *
+     * @param  {google.maps.LatLng[]|google.maps.LatLngLiteral[]|google.maps.Marker[]|GoogleMapCircleMarker[]} positions
+     * @return {GoogleMap}
+     */
+    zoomToFitAllPositions(positions: google.maps.LatLng[] | google.maps.LatLngLiteral[] | google.maps.Marker[] | GoogleMapCircleMarker[]): GoogleMap;
     /**
      * Add event listener
      *
      * @param  {string}           type
      * @param  {() => void}       listener
      * @param  {{ once: boolen }} options.once
-     * @return {this}
+     * @return {GoogleMap}
      */
     on(type: string, listener: (event?: Event) => void, option?: {
         once: boolean;
-    }): Map;
+    }): GoogleMap;
     /**
      * Remove event listener
      *
      * @param  {string}     type
      * @param  {() => void} listener
-     * @return {this}
+     * @return {GoogleMap}
      */
-    off(type: string, listener: (event?: Event) => void): Map;
+    off(type: string, listener: (event?: Event) => void): GoogleMap;
     /**
      * Call event listener
      *
@@ -75,4 +82,4 @@ declare class Map extends HTMLElement {
      */
     private addThemeControl;
 }
-export default Map;
+export default GoogleMap;

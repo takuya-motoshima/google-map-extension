@@ -226,6 +226,23 @@ map.removeMarker(marker : GoogleMapCircleMarker): GoogleMap
 ###### Return
 Returns a GoogleMap element.
 
+### zoomToFitAllPositions()
+Zoom to fit all longitude/latitude or marker.
+
+###### Syntax
+```js
+map.zoomToFitAllPositions(positions: google.maps.LatLng[] |
+                                     google.maps.LatLngLiteral[] |
+                                     google.maps.Marker[] |
+                                     GoogleMapCircleMarker[]): Map
+```
+
+###### Parameters
+- __positions__: google.maps.LatLng[]|google.maps.LatLngLiteral[]|google.maps.Marker[]|GoogleMapCircleMarker[]  
+
+###### Return
+Returns a GoogleMap element.
+
 # GoogleMapCircleMarker class.
 
 Marker object to display on the map.  
@@ -246,6 +263,17 @@ marker.moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral): Go
 
 ###### Return
 Returns a GoogleMapCircleMarker object.
+
+### getPosition()
+Returns the latitude and longitude of the marker position..
+
+###### Syntax
+```js
+marker.getPosition(): google.maps.LatLngLiteral
+```
+
+###### Return
+Returns a google.maps.LatLngLiteral object with latitude and longitude set.
 
 # GoogleMapUtils class.
 

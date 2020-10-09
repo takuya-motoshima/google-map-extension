@@ -5,7 +5,7 @@ import GoogleMapCircleMarker from '~/GoogleMapCircleMarker';
 import GoogleMapCircleMarkerOption from '~/interface/GoogleMapCircleMarkerOption';
 import GoogleMapOption from '~/interface/GoogleMapOption';
 
-class Map extends HTMLElement {
+class GoogleMap extends HTMLElement {
 
   public map: google.maps.Map;
   private theme!: HTMLSelectElement;
@@ -110,12 +110,30 @@ class Map extends HTMLElement {
    * Remove marker.
    * 
    * @param  {GoogleMapCircleMarker} marker
-   * @return {Map}
+   * @return {GoogleMap}
    */
-  public removeMarker(marker : GoogleMapCircleMarker): Map {
+  public removeMarker(marker : GoogleMapCircleMarker): GoogleMap {
     marker.remove();
     // @ts-ignore
     marker = null;
+    return this;
+  }
+
+  /**
+   * Zoom to fit all longitude/latitude or markers.
+   * 
+   * @param  {google.maps.LatLng[]|google.maps.LatLngLiteral[]|google.maps.Marker[]|GoogleMapCircleMarker[]} positions
+   * @return {GoogleMap}
+   */
+  public zoomToFitAllPositions(positions: google.maps.LatLng[]|google.maps.LatLngLiteral[]|google.maps.Marker[]|GoogleMapCircleMarker[]): GoogleMap {
+    const bounds = new google.maps.LatLngBounds();
+    for (let position of positions) {
+      if (position instanceof google.maps.LatLng) bounds.extend(position);
+      else if (position instanceof google.maps.Marker) bounds.extend(position.getPosition() as google.maps.LatLng);
+      else if (position instanceof GoogleMapCircleMarker) bounds.extend((position as GoogleMapCircleMarker).getPosition());
+      else bounds.extend(position as google.maps.LatLngLiteral);
+    }
+    this.map.fitBounds(bounds);
     return this;
   }
 
@@ -125,9 +143,9 @@ class Map extends HTMLElement {
    * @param  {string}           type
    * @param  {() => void}       listener
    * @param  {{ once: boolen }} options.once
-   * @return {this}
+   * @return {GoogleMap}
    */
-   public on(type: string, listener: (event?: Event) => void, option: { once: boolean } = { once: false }): Map {
+   public on(type: string, listener: (event?: Event) => void, option: { once: boolean } = { once: false }): GoogleMap {
     this.addEventListener(type, listener, option);
     return this;
   }
@@ -137,9 +155,9 @@ class Map extends HTMLElement {
    * 
    * @param  {string}     type
    * @param  {() => void} listener
-   * @return {this}
+   * @return {GoogleMap}
    */
-   public off(type: string, listener: (event?: Event) => void): Map {
+   public off(type: string, listener: (event?: Event) => void): GoogleMap {
     this.removeEventListener(type, listener);
     return this;
   }
@@ -180,5 +198,5 @@ class Map extends HTMLElement {
   }
 }
 
-Map.define();
-export default Map;
+GoogleMap.define();
+export default GoogleMap;

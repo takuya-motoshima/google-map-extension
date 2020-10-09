@@ -105,6 +105,19 @@ export default class GoogleMapCircleMarker {
   // }
 
   /**
+   * Returns the latitude and longitude of the marker position..
+   * 
+   * @return {google.maps.LatLngLiteral}
+   */
+  public getPosition(): google.maps.LatLngLiteral {
+    const latlng = this.marker.getPosition() as google.maps.LatLng;
+    return {
+      lat: latlng.lat(),
+      lng: latlng.lng()
+    };
+  }
+
+  /**
    * Remove marker.
    * 
    * @return {void}

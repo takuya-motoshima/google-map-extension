@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.6] - 2020-10-10
+
+- Added a method to zoom to all longitude / latitude or markers on the map(GoogleMap.zoomToFitAllPositions()).
+- Added a method to the marker that returns the current latitude and longitude(GoogleMapCircleMarker.getPosition()).
+
 ## [1.0.5] - 2020-10-09
 
 - Added map utility class(GoogleMapUtils).

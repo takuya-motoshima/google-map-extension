@@ -18,7 +18,7 @@ npm install google-map-extension;
 
 [Changelog](./CHANGELOG.md)
 
-The latest update was Added map utility class (GoogleMapUtils).
+The latest update added a method to zoom the map to all longitude / latitude or markers.
 
 ## Examples
 

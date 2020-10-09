@@ -24,6 +24,12 @@ export default class GoogleMapCircleMarker {
      */
     moveToPosition(latlng: google.maps.LatLng | google.maps.LatLngLiteral): GoogleMapCircleMarker;
     /**
+     * Returns the latitude and longitude of the marker position..
+     *
+     * @return {google.maps.LatLngLiteral}
+     */
+    getPosition(): google.maps.LatLngLiteral;
+    /**
      * Remove marker.
      *
      * @return {void}
