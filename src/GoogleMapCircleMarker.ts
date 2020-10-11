@@ -85,12 +85,18 @@ export default class GoogleMapCircleMarker {
   /**
    * Move the marker to the specified position.
    * 
-   * @param  {number}       lat
-   * @param  {number}       lng
+   * @param  {google.maps.LatLng|google.maps.LatLngLiteral} latlng
+   * @param  {boolean}                                      zoomToCurrentPosition
    * @return {GoogleMapCircleMarker}
    */
-  public moveToPosition(latlng: google.maps.LatLng|google.maps.LatLngLiteral): GoogleMapCircleMarker {
+  public moveToPosition(latlng: google.maps.LatLng|google.maps.LatLngLiteral, zoomToCurrentPosition: boolean = true): GoogleMapCircleMarker {
     this.marker.setPosition(latlng);
+    if (zoomToCurrentPosition) {
+      this.map.panTo(latlng);
+      if (this.marker.getAnimation() !== null) this.marker.setAnimation(null);
+      this.marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(() => this.marker.setAnimation(null), 1400);
+    }
     return this;
   }
 

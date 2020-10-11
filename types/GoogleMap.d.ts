@@ -49,6 +49,14 @@ declare class GoogleMap extends HTMLElement {
      */
     zoomToFitAllPositions(positions: google.maps.LatLng[] | google.maps.LatLngLiteral[] | google.maps.Marker[] | GoogleMapCircleMarker[]): GoogleMap;
     /**
+     * Move the map position.
+     *
+     * @param  {google.maps.LatLng|google.maps.LatLngLiteral} latlng
+     * @param  {boolean}                                      zoomToCurrentPosition
+     * @return {GoogleMap}
+     */
+    moveToPosition(latlng: google.maps.LatLng | google.maps.LatLngLiteral, zoomToCurrentPosition?: boolean): GoogleMap;
+    /**
      * Add event listener
      *
      * @param  {string}           type

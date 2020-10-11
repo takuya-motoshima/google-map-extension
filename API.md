@@ -243,6 +243,25 @@ map.zoomToFitAllPositions(positions: google.maps.LatLng[] |
 ###### Return
 Returns a GoogleMap element.
 
+### moveToPosition()
+Move the marker to the specified position.
+
+###### Syntax
+```js
+map.moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral, zoomToCurrentPosition: boolean = true): GoogleMap
+```
+
+###### Parameters
+- __latlang__: google.maps.LatLng|google.maps.LatLngLiteral  
+    The latitude and longitude of the destination.
+
+- __zoomToCurrentPosition__: boolean  
+    If true, zooms to the destination position.  
+    The default is true.
+
+###### Return
+Returns a GoogleMap object.
+
 # GoogleMapCircleMarker class.
 
 Marker object to display on the map.  
@@ -254,12 +273,16 @@ Move the marker to the specified position.
 
 ###### Syntax
 ```js
-marker.moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral): GoogleMapCircleMarker
+marker.moveToPosition(latlang: google.maps.LatLng|google.maps.LatLngLiteral, zoomToCurrentPosition: boolean = true): GoogleMapCircleMarker
 ```
 
 ###### Parameters
 - __latlang__: google.maps.LatLng|google.maps.LatLngLiteral  
     The latitude and longitude of the display position of the marker.
+
+- __zoomToCurrentPosition__: boolean  
+    If true, zoom to the position of the marker after moving.  
+    The default is true.
 
 ###### Return
 Returns a GoogleMapCircleMarker object.

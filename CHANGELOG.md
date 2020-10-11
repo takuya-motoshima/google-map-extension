@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.7] - 2020-10-11
+
+- Added an option to zoom after moving to the marker position movement method(GoogleMapCircleMarker.moveToPosition()).
+- Added a method to change the current position in the map class(GoogleMap.moveToPosition()).
+
 ## [1.0.6] - 2020-10-10
 
 - Added a method to zoom to all longitude / latitude or markers on the map(GoogleMap.zoomToFitAllPositions()).

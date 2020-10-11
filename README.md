@@ -94,6 +94,28 @@ See [API Documentation](./API.md) for details.
     </tbody>
 </table>
 
+#### Current location on the map.  
+
+Example.  
+
+```js
+<google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
+import 'google-map-extension';
+
+// Map element.
+const map = document.querySelector('#map');
+
+// Get position when map is clicked.
+map.on('click.map', event => {
+  // longitude latitude.
+  const latlng = event.detail;
+  // Display the clicked position.
+  map.moveToPosition(latlng);
+});
+```
+
 ### Map marker usage.
 
 #### Display simple circle marker.  

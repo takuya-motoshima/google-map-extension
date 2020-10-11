@@ -18,11 +18,11 @@ export default class GoogleMapCircleMarker {
     /**
      * Move the marker to the specified position.
      *
-     * @param  {number}       lat
-     * @param  {number}       lng
+     * @param  {google.maps.LatLng|google.maps.LatLngLiteral} latlng
+     * @param  {boolean}                                      zoomToCurrentPosition
      * @return {GoogleMapCircleMarker}
      */
-    moveToPosition(latlng: google.maps.LatLng | google.maps.LatLngLiteral): GoogleMapCircleMarker;
+    moveToPosition(latlng: google.maps.LatLng | google.maps.LatLngLiteral, zoomToCurrentPosition?: boolean): GoogleMapCircleMarker;
     /**
      * Returns the latitude and longitude of the marker position..
      *

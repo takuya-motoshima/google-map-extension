@@ -138,6 +138,19 @@ class GoogleMap extends HTMLElement {
   }
 
   /**
+   * Move the map position.
+   * 
+   * @param  {google.maps.LatLng|google.maps.LatLngLiteral} latlng
+   * @param  {boolean}                                      zoomToCurrentPosition
+   * @return {GoogleMap}
+   */
+  public moveToPosition(latlng: google.maps.LatLng|google.maps.LatLngLiteral, zoomToCurrentPosition: boolean = true): GoogleMap {
+    if (zoomToCurrentPosition) this.map.panTo(latlng);
+    else this.map.setCenter(latlng);
+    return this;
+  }
+
+  /**
    * Add event listener
    * 
    * @param  {string}           type
