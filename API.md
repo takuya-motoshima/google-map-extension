@@ -155,9 +155,9 @@ const marker = await map.addMarker();
 // Get position when map is clicked.
 map.on('click.map', event => {
     // longitude latitude.
-    const latlng = event.detail;
+    const position = event.detail;
     // Move the marker to the clicked position.
-    marker.moveToPosition(latlng);
+    marker.moveToPosition(position);
 });
 ```
 
@@ -303,6 +303,26 @@ Returns a google.maps.LatLngLiteral object with latitude and longitude set.
 General purpose map utility.  
 
 ## Methods
+
+### getCurrentPosition()
+Returns the current latitude and longitude.
+
+###### Syntax
+```js
+GoogleMapUtils.getCurrentPosition(option?: { timeout?: number, maximumAge?: number }): Promise<google.maps.LatLngLiteral>
+```
+
+###### Parameters
+- __timeout__: number  
+    integer (milliseconds) - amount of time before the error callback is invoked, if 0 it will never invoke.  
+    The default is 5000.
+
+- __maximumAge__: number  
+    integer (milliseconds) | infinity - maximum cached position age.  
+    The default is 0.
+
+###### Return
+Returns a google.maps.LatLngLiteral object with the current position set.
 
 ### getLatLngFromAddress()
 Get latitude / longitude from address.

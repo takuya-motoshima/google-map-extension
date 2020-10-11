@@ -18,7 +18,7 @@ npm install google-map-extension;
 
 [Changelog](./CHANGELOG.md)
 
-The latest update added a method to zoom the map to all longitude / latitude or markers.
+The latest update added a method to return the latitude and longitude of the current position in the utility class.
 
 ## Examples
 
@@ -110,9 +110,9 @@ const map = document.querySelector('#map');
 // Get position when map is clicked.
 map.on('click.map', event => {
   // longitude latitude.
-  const latlng = event.detail;
+  const position = event.detail;
   // Display the clicked position.
-  map.moveToPosition(latlng);
+  map.moveToPosition(position);
 });
 ```
 
@@ -207,9 +207,9 @@ const map = document.querySelector('#map');
 // Get position when map is clicked.
 map.on('click.map', event => {
   // longitude latitude.
-  const latlng = event.detail;
+  const position = event.detail;
   // Move the marker to the clicked position.
-  marker.moveToPosition(latlng);
+  marker.moveToPosition(position);
 });
 
 // Add a marker.

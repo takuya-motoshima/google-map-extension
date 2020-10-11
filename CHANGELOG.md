@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.8] - 2020-10-11
+
+- Added a method to return the latitude and longitude of the current position in the utility class.(GoogleMapUtils.getCurrentPosition())
+
 ## [1.0.7] - 2020-10-11
 
 - Added an option to zoom after moving to the marker position movement method(GoogleMapCircleMarker.moveToPosition()).

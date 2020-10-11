@@ -30,9 +30,9 @@
       // Get position when map is clicked.
       map.on('click.map', event => {
         // longitude latitude.
-        const latlng = event.detail;
+        const position = event.detail;
         // Move the marker to the clicked position.
-        marker1.moveToPosition(latlng);
+        marker1.moveToPosition(position);
       });
 
       // Marker color.

@@ -9,9 +9,19 @@ export default class {
     static getLatLngFromAddress(address: string): Promise<google.maps.LatLngLiteral>;
     /**
      * Get the address from latitude and longitude.
-  
+     *
      * @param  {google.maps.LatLng|google.maps.LatLngLiteral} latlng
      * @return {Promise<string>}
      */
     static getAddressFromLatLng(latlng: google.maps.LatLng | google.maps.LatLngLiteral): Promise<string | undefined>;
+    /**
+     * Returns the current latitude and longitude.
+     *
+     * @param  {google.maps.LatLng|google.maps.LatLngLiteral} latlng
+     * @return {Promise<string>}
+     */
+    static getCurrentPosition(option?: {
+        timeout?: number;
+        maximumAge?: number;
+    }): Promise<google.maps.LatLngLiteral>;
 }

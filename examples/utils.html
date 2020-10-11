@@ -29,11 +29,11 @@
           <div class="form-row align-items-end">
             <div class="form-group col-sm-5">
               <label>Latitude</label>
-              <input type="text" class="form-control"  name="lat" placeholder="0.000000" required>
+              <input type="text" class="form-control" name="lat" placeholder="0.000000" required>
             </div>
             <div class="form-group col-sm-5">
               <label>Longitude</label>
-              <input type="text" class="form-control"  name="lng" placeholder="0.000000" required>
+              <input type="text" class="form-control" name="lng" placeholder="0.000000" required>
             </div>
             <div class="form-group col-sm-2">
               <button type="submit" class="btn btn-primary">Convert</button>
@@ -56,40 +56,50 @@
     import { GoogleMapUtils } from '../dist/build.esm.js';
 
     (async () => {
+
+      // Show position on form.
+      async function showPositionOnForm(position) {
+        const form = document.querySelector('#form');
+        form.elements.lat.value = position.lat;
+        form.elements.lng.value = position.lng;
+        form.elements.address.value = await GoogleMapUtils.getAddressFromLatLng(position);
+      }
+
+      // Get the current latitude and longitude.
+      const position = await GoogleMapUtils.getCurrentPosition();
+
+      // Show position on form.
+      showPositionOnForm(position);
+
       // Map element.
       const map = document.querySelector('#map');
+      map.moveToPosition(position);
 
       // Add a marker.
-      const marker = await map.addMarker({ size: 30 });
+      const marker = await map.addMarker({ position, size: 30 });
 
       // Convert the location of the clicked map to an address.
       map.on('click.map', async event => {
         // longitude latitude.
-        const latlng = event.detail;
-
-        // Convert latitude / longitude to address.
-        const address = await GoogleMapUtils.getAddressFromLatLng(latlng);
-
-        // Show latitude / longitude and address.
-        const form = document.querySelector('#form');
-        form.elements.lat.value = latlng.lat;
-        form.elements.lng.value = latlng.lng;
-        form.elements.address.value = address;
-
+        const position = event.detail;
+        // Show position on form.
+        showPositionOnForm(position);
         // Move marker to selected position.
-        marker.moveToPosition(latlng);
+        marker.moveToPosition(position);
       });
 
       // Get the address of the entered position.
-      document.querySelector('#form').addEventListener('submit', async event => {
+      form.addEventListener('submit', async event => {
         try {
           event.preventDefault();
-          const form = event.target;
           const lat = parseFloat(form.elements.lat.value);
           const lng = parseFloat(form.elements.lng.value);
-          console.log(lat, lng);
-          const address = await GoogleMapUtils.getAddressFromLatLng({ lat, lng });
-          form.elements.address.value = address;
+
+          // Show current address.
+          form.elements.address.value = await GoogleMapUtils.getAddressFromLatLng({ lat, lng });
+
+          // Move marker to selected position.
+          marker.moveToPosition({ lat, lng });
         } catch (e) {
           alert(e);
         }

@@ -22,7 +22,7 @@ export default class {
 
   /**
    * Get the address from latitude and longitude.
-
+   * 
    * @param  {google.maps.LatLng|google.maps.LatLngLiteral} latlng
    * @return {Promise<string>}
    */
@@ -38,6 +38,27 @@ export default class {
         const address = results[0].formatted_address;
         resolve(address);
       });
+    });
+  }
+
+  /**
+   * Returns the current latitude and longitude.
+   * 
+   * @param  {google.maps.LatLng|google.maps.LatLngLiteral} latlng
+   * @return {Promise<string>}
+   */
+  public static async getCurrentPosition(option?: { timeout?: number, maximumAge?: number }): Promise<google.maps.LatLngLiteral> {
+    // Initialize options.
+    option = Object.assign({
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0}, option || {});
+    return await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        position => resolve({ lat: position.coords.latitude, lng: position.coords.longitude }),
+        error => reject(error),
+        option
+      );
     });
   }
 }
