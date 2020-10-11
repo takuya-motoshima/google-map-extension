@@ -58,7 +58,7 @@ class GoogleMap extends HTMLElement {
     }
 
     // Returns the latitude and longitude you clicked when you clicked on the map.
-    this.map.addListener('click', event => this.invoke('click.map', { lat: event.latLng.lat(), lng: event.latLng.lng() }));
+    // this.map.addListener('click', event => this.invoke('click.map', { lat: event.latLng.lat(), lng: event.latLng.lng() }));
   }
 
   /**

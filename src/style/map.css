@@ -47,3 +47,7 @@
       transition: none;
     }
   }
+
+  .google-map-info {
+    font-family: x-locale-heading-primary,zillaslab,Palatino,"Palatino Linotype",x-locale-heading-secondary,serif;
+  }

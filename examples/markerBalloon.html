@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+  <title>Google map marker balloon</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4upCxP6mO3hJ7e2Oykbo-I0ymRHnxHss&language=en"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&language=en"></script> -->
+  <script type="module">
+    import { GoogleMapUtils } from '../dist/build.esm.js';
+
+    (async () => {
+
+      // Map element.
+      const map = document.querySelector('#map');
+
+      // Current position.
+      const position = { lat: 35.658584, lng: 139.7454316 };
+
+      // Current address.
+      const address = await GoogleMapUtils.getAddressFromLatLng(position);
+
+      // Add a marker.
+      const marker = await map.addMarker({
+        image: 'image/face6.png',
+        color: 'rgb(255,45,85)',
+        size: 80,
+        position,
+        info: address});
+    })();
+  </script>
+</body>
+</html>

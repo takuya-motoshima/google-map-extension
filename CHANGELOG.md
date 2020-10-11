@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.0.10] - 2020-10-11
+
+- Added marker callout.
+
+    ![marker-balloon.png](https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/marker-balloon.png)
+
+    Example.  
+
+    ```js
+    <google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+
+    import { GoogleMapUtils } from 'google-map-extension';
+
+    // Map element.
+    const map = document.querySelector('#map');
+
+    // Current position.
+    const position = { lat: 35.658584, lng: 139.7454316 };
+
+    // Current address.
+    const address = await GoogleMapUtils.getAddressFromLatLng(position);
+
+    // Add a marker.
+    const marker = await map.addMarker({
+      image: 'image/face6.png',
+      color: 'rgb(255,45,85)',
+      position,
+      info: address});
+    ```
+
 ## [1.0.9] - 2020-10-11
 
 - Added a method to switch the display state of the marker(GoogleMapCircleMarker.setVisible()).

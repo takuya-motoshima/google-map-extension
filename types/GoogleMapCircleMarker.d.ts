@@ -1,8 +1,9 @@
 /// <reference types="googlemaps" />
 import GoogleMapCircleMarkerOption from '~/interface/GoogleMapCircleMarkerOption';
 export default class GoogleMapCircleMarker {
-    map: google.maps.Map;
+    private map;
     marker: google.maps.Marker;
+    private info;
     /**
      * constructor
      *
@@ -42,4 +43,17 @@ export default class GoogleMapCircleMarker {
      * @return {void}
      */
     remove(): void;
+    /**
+     * Set the marker balloon text.
+     *
+     * @param  {string}                content
+     * @return {GoogleMapCircleMarker}
+     */
+    setInfo(content: string): GoogleMapCircleMarker;
+    /**
+     * Clear the marker balloon message.
+     *
+     * @return {GoogleMapCircleMarker}
+     */
+    clearInfo(): GoogleMapCircleMarker;
 }

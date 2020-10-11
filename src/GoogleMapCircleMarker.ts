@@ -3,8 +3,9 @@ import { Template } from 'js-shared';
 
 export default class GoogleMapCircleMarker {
 
-  public map: google.maps.Map;
+  private map: google.maps.Map;
   public marker!: google.maps.Marker;
+  private info!: google.maps.InfoWindow;
 
   /**
    * constructor
@@ -30,7 +31,8 @@ export default class GoogleMapCircleMarker {
       size: 50,
       visible: true,
       image: undefined,
-      color: 'rgb(0,122,255)'
+      color: 'rgb(0,122,255)',
+      info: undefined
     }, option || {});
 
     // Marker HTML.
@@ -77,8 +79,22 @@ export default class GoogleMapCircleMarker {
         scaledSize: new google.maps.Size(option.size * 2, option.size * 2)
       },
       draggable: false,
-      clickable: false,
+      clickable: true,
       optimized: false
+    });
+
+    // Added marker callout.
+    this.info = new google.maps.InfoWindow({
+      content: option.info ? `<div class="google-map-info">${option.info}</div>` : undefined,
+      maxWidth: 200
+    });
+    if (this.info.getContent()) this.info.open(this.map, this.marker);
+    else this.info.close();
+
+    // Show a callout when the marker is clicked.
+    this.marker.addListener('click', () => {
+      if (!this.info.getContent()) return;
+      this.info.open(this.map, this.marker)
     });
   }
 
@@ -141,5 +157,28 @@ export default class GoogleMapCircleMarker {
    */
   public remove(): void {
     this.marker.setMap(null);
+  }
+
+  /**
+   * Set the marker balloon text.
+   * 
+   * @param  {string}                content
+   * @return {GoogleMapCircleMarker}
+   */
+  public setInfo(content: string): GoogleMapCircleMarker {
+    this.info.setContent(`<div class="google-map-info">${content}</div>`);
+    this.info.open(this.map, this.marker);
+    return this;
+  }
+
+  /**
+   * Clear the marker balloon message.
+   * 
+   * @return {GoogleMapCircleMarker}
+   */
+  public clearInfo(): GoogleMapCircleMarker {
+    this.info.setContent('');
+    this.info.close();
+    return this;
   }
 }

@@ -181,7 +181,8 @@ map.addMarker(option?: {
   size?: number,
   visible?: boolean,
   image?: string,
-  color?: string
+  color?: string,
+  info?: string
 }): Promise<GoogleMapCircleMarker>
 ```
 
@@ -206,6 +207,10 @@ map.addMarker(option?: {
 - __color__: string  
     The color of the marker.  
     The default is blue (rgb(0,122,255)).
+
+- __info__: string  
+    The text to display in the marker balloon.  
+    The default is none (undefined).
 
 ###### Return
 Returns a GoogleMapCircleMarker object.  
@@ -309,6 +314,33 @@ marker.setVisible(visible: boolean): GoogleMapCircleMarker
 ###### Parameters
 - __visible__: boolean  
     Set true to show the marker, false to hide it.
+
+###### Return
+Returns a GoogleMapCircleMarker object.
+
+### setInfo()
+Set the marker balloon text.
+
+###### Syntax
+```js
+marker.setInfo(content: string): GoogleMapCircleMarker
+```
+
+###### Parameters
+- __content__: string  
+    The text to display in the balloon.  
+    You can also set the HTML code.
+
+###### Return
+Returns a GoogleMapCircleMarker object.
+
+### clearInfo()
+Clear the marker balloon message.
+
+###### Syntax
+```js
+marker.clearInfo(): GoogleMapCircleMarker
+```
 
 ###### Return
 Returns a GoogleMapCircleMarker object.

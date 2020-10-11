@@ -18,7 +18,27 @@ npm install google-map-extension;
 
 [Changelog](./CHANGELOG.md)
 
-The latest update adds a method to toggle the display of markers.
+The latest update is now able to display callouts on markers.
+
+![marker-balloon.png](https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/marker-balloon.png)
+
+```js
+<google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+
+import { GoogleMapUtils } from 'google-map-extension';
+
+// Map element.
+const map = document.querySelector('#map');
+
+// Current position.
+const position = { lat: 35.658584, lng: 139.7454316 };
+
+// Current address.
+const info = await GoogleMapUtils.getAddressFromLatLng(position);
+
+// Add a marker.
+const marker = await map.addMarker({ position, info });
+```
 
 ## Examples
 

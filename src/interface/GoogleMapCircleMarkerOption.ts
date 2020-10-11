@@ -6,5 +6,6 @@ export default interface {
   size: number,
   visible: boolean,
   image?: string,
-  color?: string
+  color?: string,
+  info?: string
 }

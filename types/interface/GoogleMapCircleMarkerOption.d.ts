@@ -7,4 +7,5 @@ export default interface  {
     visible: boolean;
     image?: string;
     color?: string;
+    info?: string;
 }
