@@ -18,7 +18,7 @@ npm install google-map-extension;
 
 [Changelog](./CHANGELOG.md)
 
-The latest update added a method to return the latitude and longitude of the current position in the utility class.
+The latest update adds a method to toggle the display of markers.
 
 ## Examples
 

@@ -30,6 +30,13 @@ export default class GoogleMapCircleMarker {
      */
     getPosition(): google.maps.LatLngLiteral;
     /**
+     * Switch the visible state of the marker.
+     *
+     * @param  {boolean}               visible
+     * @return {GoogleMapCircleMarker}
+     */
+    setVisible(visible: boolean): GoogleMapCircleMarker;
+    /**
      * Remove marker.
      *
      * @return {void}

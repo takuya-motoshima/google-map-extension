@@ -298,6 +298,21 @@ marker.getPosition(): google.maps.LatLngLiteral
 ###### Return
 Returns a google.maps.LatLngLiteral object with latitude and longitude set.
 
+### setVisible()
+Switch the visible state of the marker.
+
+###### Syntax
+```js
+marker.setVisible(visible: boolean): GoogleMapCircleMarker
+```
+
+###### Parameters
+- __visible__: boolean  
+    Set true to show the marker, false to hide it.
+
+###### Return
+Returns a GoogleMapCircleMarker object.
+
 # GoogleMapUtils class.
 
 General purpose map utility.  

@@ -124,6 +124,17 @@ export default class GoogleMapCircleMarker {
   }
 
   /**
+   * Switch the visible state of the marker.
+   * 
+   * @param  {boolean}               visible
+   * @return {GoogleMapCircleMarker}
+   */
+  public setVisible(visible: boolean): GoogleMapCircleMarker {
+    this.marker.setVisible(visible);
+    return this;
+  }
+
+  /**
    * Remove marker.
    * 
    * @return {void}

@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.9] - 2020-10-11
+
+- Added a method to switch the display state of the marker(GoogleMapCircleMarker.setVisible()).
+
 ## [1.0.8] - 2020-10-11
 
 - Added a method to return the latitude and longitude of the current position in the utility class.(GoogleMapUtils.getCurrentPosition())
