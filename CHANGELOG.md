@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.11] - 2020-10-13
+
+- Corrected CSS typos in maps.
+
 ## [1.0.10] - 2020-10-11
 
 - Added marker callout.
