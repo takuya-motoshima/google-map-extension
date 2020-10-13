@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.12] - 2020-10-13
+
+- Fixed a bug where the map click event did not fire (click.map).
+
 ## [1.0.11] - 2020-10-13
 
 - Corrected CSS typos in maps.

@@ -18,27 +18,21 @@ npm install google-map-extension;
 
 [Changelog](./CHANGELOG.md)
 
-The latest update is now able to display callouts on markers.
+Below are the three latest updates.  
 
-![marker-balloon.png](https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/marker-balloon.png)
+### [1.0.12] - 2020-10-13
 
-```js
-<google-map id="map" zoom="12" center="35.658584,139.7454316" theme="dark"></google-map>
+- Fixed a bug where the map click event did not fire (click.map).
 
-import { GoogleMapUtils } from 'google-map-extension';
+### [1.0.11] - 2020-10-13
 
-// Map element.
-const map = document.querySelector('#map');
+- Corrected CSS typos in maps.
 
-// Current position.
-const position = { lat: 35.658584, lng: 139.7454316 };
+### [1.0.10] - 2020-10-11
 
-// Current address.
-const info = await GoogleMapUtils.getAddressFromLatLng(position);
+- Added marker callout.
 
-// Add a marker.
-const marker = await map.addMarker({ position, info });
-```
+    ![marker-balloon.png](https://raw.githubusercontent.com/takuya-motoshima/google-map-extension/master/screencap/marker-balloon.png)
 
 ## Examples
 
