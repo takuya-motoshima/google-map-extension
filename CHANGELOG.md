@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.13] - 2020-10-14
+
+- Changed maximum width of marker tooltip from 200px to 400px.
+
 ## [1.0.12] - 2020-10-13
 
 - Fixed a bug where the map click event did not fire (click.map).

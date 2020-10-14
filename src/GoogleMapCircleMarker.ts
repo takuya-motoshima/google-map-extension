@@ -86,7 +86,7 @@ export default class GoogleMapCircleMarker {
     // Added marker callout.
     this.info = new google.maps.InfoWindow({
       content: option.info ? `<div class="google-map-info">${option.info}</div>` : undefined,
-      maxWidth: 200
+      maxWidth: 400
     });
     if (this.info.getContent()) this.info.open(this.map, this.marker);
     else this.info.close();
