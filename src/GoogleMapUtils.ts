@@ -61,4 +61,17 @@ export default class {
       );
     });
   }
+
+  /**
+   * Returns the distance, in meters, between two LatLngs.
+   * 
+   * @param  {google.maps.LatLng|google.maps.LatLngLiteral} from
+   * @param  {google.maps.LatLng|google.maps.LatLngLiteral} to
+   * @return {number}
+   */
+  public static computeDistanceBetween(from: google.maps.LatLng|google.maps.LatLngLiteral, to: google.maps.LatLng|google.maps.LatLngLiteral): number {
+    if (!(from instanceof google.maps.LatLng)) from = new google.maps.LatLng(from.lat, from.lng);
+    if (!(to instanceof google.maps.LatLng)) to = new google.maps.LatLng(to.lat, to.lng);
+    return google.maps.geometry.spherical.computeDistanceBetween(from as google.maps.LatLng, to as google.maps.LatLng);
+  }
 }

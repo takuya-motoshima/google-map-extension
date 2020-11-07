@@ -24,4 +24,12 @@ export default class {
         timeout?: number;
         maximumAge?: number;
     }): Promise<google.maps.LatLngLiteral>;
+    /**
+     * Returns the distance, in meters, between two LatLngs.
+     *
+     * @param  {google.maps.LatLng|google.maps.LatLngLiteral} from
+     * @param  {google.maps.LatLng|google.maps.LatLngLiteral} to
+     * @return {number}
+     */
+    static computeDistanceBetween(from: google.maps.LatLng | google.maps.LatLngLiteral, to: google.maps.LatLng | google.maps.LatLngLiteral): number;
 }

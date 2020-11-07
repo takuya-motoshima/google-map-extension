@@ -400,3 +400,24 @@ GoogleMapUtils.getAddressFromLatLng(latlng: google.maps.LatLng|google.maps.LatLn
 
 ###### Return
 Returns the address obtained based on latitude and longitude.
+
+### computeDistanceBetween()
+Returns the distance, in meters, between two LatLngs.
+
+###### Syntax
+```js
+GoogleMapUtils.computeDistanceBetween(
+  from: google.maps.LatLng|google.maps.LatLngLiteral,
+  to: google.maps.LatLng|google.maps.LatLngLiteral
+): number
+```
+
+###### Parameters
+- __from__: google.maps.LatLng|google.maps.LatLngLiteral  
+    From position.
+
+- __to__: google.maps.LatLng|google.maps.LatLngLiteral  
+    To position.
+
+###### Return
+Returns the distance, in meters, between two LatLngs.

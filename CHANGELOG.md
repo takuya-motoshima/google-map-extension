@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.14] - 2020-11-07
+
+- Added a method to measure the distance between two positions in the utility class(GoogleMapUtils#computeDistanceBetween()).
+
 ## [1.0.13] - 2020-10-14
 
 - Changed maximum width of marker tooltip from 200px to 400px.

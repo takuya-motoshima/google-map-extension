@@ -20,6 +20,10 @@ npm install google-map-extension;
 
 Below are the three latest updates.  
 
+### [1.0.14] - 2020-11-07
+
+- Added a method to measure the distance between two positions in the utility class(GoogleMapUtils#computeDistanceBetween()).
+
 ### [1.0.12] - 2020-10-13
 
 - Fixed a bug where the map click event did not fire (click.map).

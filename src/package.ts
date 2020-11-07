@@ -1,5 +1,5 @@
 export var name = "google-map-extension";
-export var version = "1.0.12";
+export var version = "1.0.13";
 export var description = "Google Map extension.";
 export var main = "dist/build.common.js";
 export var module = "dist/build.esm.js";
