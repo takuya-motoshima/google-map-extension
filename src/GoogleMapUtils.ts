@@ -64,6 +64,9 @@ export default class {
 
   /**
    * Returns the distance, in meters, between two LatLngs.
+   * This example requires the Geometry library. Include the libraries=geometry
+   * parameter when you first load the API. For example:
+   * <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=geometry">
    * 
    * @param  {google.maps.LatLng|google.maps.LatLngLiteral} from
    * @param  {google.maps.LatLng|google.maps.LatLngLiteral} to

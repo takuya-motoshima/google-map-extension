@@ -402,7 +402,10 @@ GoogleMapUtils.getAddressFromLatLng(latlng: google.maps.LatLng|google.maps.LatLn
 Returns the address obtained based on latitude and longitude.
 
 ### computeDistanceBetween()
-Returns the distance, in meters, between two LatLngs.
+Returns the distance, in meters, between two LatLngs.  
+This example requires the Geometry library. Include the libraries=geometry  
+parameter when you first load the API. For example:  
+\<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=geometry">
 
 ###### Syntax
 ```js
